@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deployment-nginx
+  name: deployment-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deployment-nginx
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: deployment-nginx
+    spec:
+      containers:
+      - image: nginx:1.19.1
+        name: nginx
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: 256Mi
+          requests:
+            cpu: 0.25
+            memory: 128Mi
+        readinessProbe:
+          exec:
+            command:
+            - curl 
+            - f
+            - http://localhost:80/
+          initialDelaySeconds: 10 
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+          successThreshold: 2
