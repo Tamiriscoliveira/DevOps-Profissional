@@ -1,0 +1,28 @@
+Esse arquivo e baseado nas informações feitas em aula do Day-7, na criação de headless.
+
+Após verificar que o Headless Service foi criado, podemos utilizar o comando:
+   kubectl get service
+
+Para ver com mais detalhes:
+   kubectl describe service nginx
+
+Depois do Statefulset e o Headless Service criados, podemos acessar cada Pod individualmente, para isso podemos utilizar o comando:
+  kubectl exec -ti nginx-0 -- bash #para acessar o pod nginx-0
+  kubectl exec -ti nginx-1 -- bash #para acessar o pod nginx-1
+  kubectl exec -ti nginx-2 -- bash #para acessar o pod nginx-2
+
+Precisamos alterar a pagina web do nginx de cada pod, após acessar o Pod necessário fazer a criação do arquivo index.html, utilize o comando 
+echo para direcionar para o path do nginx.
+  echo "GIROPOPS-0" > /usr/share/nginx/html/index.html #No pod nginx-0
+  echo "GIROPOPS-1" > /usr/share/nginx/html/index.html #No pod nginx-1
+  echo "GIROPOPS-2" > /usr/share/nginx/html/index.html #No pod nginx-2
+
+Quando um StatefulSet é criado, ele geralmente é associado a um Headless Service. Ele é usado para controlar o domínio DNS dos Pods criados pelo StatefulSet. Cada Pod obtém um nome de host DNS que segue o formato: <pod-name>.<service-name>.<namespace>.svc.cluster.local. Isso permite que cada Pod seja alcançado individualmente. 
+Para testamos o POD via DNS, utilizamos o curl dentro dos pods, da seguinte maneira: 
+Neste exemplo estou dentro do pod nginx-1 fazendo o acesso via curl aos demais pods.
+  root@nginx-1:/# curl nginx-0.nginx.default.svc.cluster.local
+  root@nginx-1:/# curl nginx-1.nginx.default.svc.cluster.local
+  root@nginx-1:/# curl nginx-2.nginx.default.svc.cluster.local
+
+
+
