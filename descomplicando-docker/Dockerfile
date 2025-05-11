@@ -9,4 +9,5 @@ COPY  --from=buildando /app/hello /app/hello
 ENV  APP="hello_world"
 ARG  TERAPIA="correr" 
 RUN echo "A minha terapia é: $TERAPIA"
+VOLUME /app/dados
 CMD ["/app/hello"]
