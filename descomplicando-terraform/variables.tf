@@ -11,6 +11,11 @@ variable "image_id" { //declarar a variavel
 
 }
 
+variable "cidr_block" {
+  type        = string
+  description = "Rede padrão 10.0.0.0/16"
+
+}
 
 
 // terraform plan -out plano -var="image_id=ami-abc123" para passar via linha de comando o valor da variável
