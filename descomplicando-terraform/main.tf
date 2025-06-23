@@ -15,11 +15,12 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "web" {
-     ami          = data.aws_ami.ubuntu.id
-    instance_type = "t3.micro"
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
 
   tags = {
-    Name = "HelloWorld"
+    Name       = "HelloWorld"
     Plataforma = data.aws_ami.ubuntu.platform_details
+    Env        = "develop"
   }
 }

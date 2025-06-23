@@ -1,13 +1,12 @@
 terraform {
 
-backend "s3" {
+  backend "s3" {
     bucket = "aula-terraform-tamiris"
     key    = "aula-backend"
     region = "us-east-1"
   }
 
-
-required_providers {
+  required_providers {
     aws = {
       source  = "hashicorp/aws"
       version = "~> 5.0"
