@@ -28,7 +28,8 @@ resource "aws_instance" "web" {
 
 
 resource "aws_instance" "webest" {
-  ami           = data.aws_ami.ubuntu.id
+  //ami           = data.aws_ami.ubuntu.id
+  ami           = var.image_id
   instance_type = "t3.micro"
   provider      = aws.west
   tags = {
