@@ -15,7 +15,8 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "web" {
-  ami           = data.aws_ami.ubuntu.id
+  // ami           = data.aws_ami.ubuntu.id
+  ami           = var.image_id //como usar a variavel
   instance_type = "t3.micro"
 
   tags = {
@@ -24,3 +25,16 @@ resource "aws_instance" "web" {
     Env        = "develop"
   }
 }
+
+
+resource "aws_instance" "webest" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
+  provider      = aws.west
+  tags = {
+    Name       = "HelloWorld"
+    Plataforma = data.aws_ami.ubuntu.platform_details
+    Env        = "develop"
+  }
+}
+
