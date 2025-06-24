@@ -1,9 +1,10 @@
 terraform {
 
   backend "s3" {
-    bucket = "aula-terraform-tamiris"
-    key    = "aula-backend"
-    region = "us-east-1"
+    bucket         = "aula-terraform-tamiris"
+    key            = "aula-backend"
+    region         = "us-east-1"
+    dynamodb_table = "aula_dynamodb_terraform"
   }
 
   required_providers {

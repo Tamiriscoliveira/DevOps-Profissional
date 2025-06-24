@@ -39,7 +39,7 @@ resource "aws_instance" "webest" {
   }
 }
 
-//terraform state list  verificar os recursos 
+//terraform state list para verificar os objetos dentro do state
 //terraform state show data.aws_ami.ubuntu
 //terraform state pull | jq
 // terraform state pull | jq .availability_zone
