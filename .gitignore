@@ -42,3 +42,5 @@ terraform.rc
 #Diretóros e arquivos  a ser ignorados
 descomplicando_terraform_turma_2024
 dockerhub-secret.yaml
+*.txt
+
