@@ -28,3 +28,14 @@ variable "load_balancer_internal" {} #Define se o Load Balancer deve ser interno
 variable "load_balancer_type" {} # O tipo de Load Balancer a ser criado (ex: 'application' ou 'network').
 
 
+### ECS General ###
+
+variable "nodes_ami" {}
+
+variable "node_instance_type" {}
+
+variable "node_volume_size" {}
+
+variable "node_volume_type" {}
+
+
