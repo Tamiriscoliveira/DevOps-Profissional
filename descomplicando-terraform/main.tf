@@ -9,7 +9,6 @@ provider "aws" {
 terraform {
   backend "s3" {
     bucket = "aula-terraform-tamiris"
-    //dynamodb_table = "state-lock_dynamodb_terraform"
     key    = "test"
     region = "us-east-1"
   }
@@ -17,9 +16,9 @@ terraform {
 
 
 
-
-
 //comando que altera o backend 
 //terraform init -migrate-state
 //terraform init -reconfigure
 //terraform state pull >> aula-backend.tfstate 
+
+//dynamodb_table = "state-lock_dynamodb_terraform" //para arquivo de lock state
