@@ -1,3 +1,4 @@
+
 data "aws_ami" "ubuntu" {
   most_recent = true
 
@@ -10,14 +11,20 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "web" {
-  count = var.servers
-  //ami           = data.aws_ami.ubuntu.id  //pega valor do data
-  ami           = var.image_id // pega valor da variavel
+  // count = var.servers
+  ami = data.aws_ami.ubuntu.id //pega valor do data
+  // ami           = var.image_id // pega valor da variavel
   instance_type = "t2.micro"
 
   tags = {
     Name = "HelloWorld"
   }
+
+  # depends_on = [aws_instance.web ]
 }
 
+resource "aws_eip" "ip" {
+  // vpc      = true
+  instance = aws_instance.web.id
+}
 

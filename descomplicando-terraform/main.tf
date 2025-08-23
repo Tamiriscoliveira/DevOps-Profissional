@@ -8,10 +8,13 @@ provider "aws" {
 //backend
 terraform {
   backend "s3" {
-    bucket = "aula-terraform-tamiris"
-    key    = "test"
-    region = "us-east-1"
+    bucket  = "aula-terraform-tamiris"
+    key     = "test"
+    region  = "us-east-1"
+    encrypt = true
+
   }
+
 }
 
 
