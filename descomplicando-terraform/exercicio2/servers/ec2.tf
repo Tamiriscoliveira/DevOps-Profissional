@@ -10,10 +10,11 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Ubuntu
 }
 
+
 resource "aws_instance" "web" {
   // count = var.servers
-  ami = data.aws_ami.ubuntu.id //pega valor do data
-  // ami           = var.image_id // pega valor da variavel
+  // ami = data.aws_ami.ubuntu.id //pega valor do data
+  ami           = var.image_id // pega valor da variavel
   instance_type = "t2.micro"
 
   tags = {
@@ -27,4 +28,7 @@ resource "aws_eip" "ip" {
   // vpc      = true
   instance = aws_instance.web.id
 }
+
+
+
 

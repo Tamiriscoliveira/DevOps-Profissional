@@ -6,3 +6,5 @@ variable "image_id" {
 
 
 variable "servers" {} // quando não coloca o valor default obriga ao operador
+
+
