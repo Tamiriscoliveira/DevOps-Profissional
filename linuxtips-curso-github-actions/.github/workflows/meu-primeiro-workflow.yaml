@@ -1,0 +1,17 @@
+name: Primeiro Workflow linuxtips
+
+#definindo o trigger do tipo push, para toda vez que um commit for feito o workflow será executado.
+
+on:
+  workflow_dispatch
+    
+#serviço 
+jobs:    
+  giropops:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confere versão do ubuntu
+        run: cat /etc/os-release
+
+      - name: exibir uma mensagem
+        run: echo "estou fazendo o curso de Github Actions da linuxtips"  
