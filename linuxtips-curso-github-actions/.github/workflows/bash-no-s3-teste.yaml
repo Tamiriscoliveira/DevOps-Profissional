@@ -1,0 +1,23 @@
+name: Executar Script Bash e Enviar para S3
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "0 12 * * 5" # Toda sexta-feira às 12h UTC
+
+jobs:
+  job-executor-scripts:
+    runs-on: ubuntu-latest
+    defaults: 
+      run:
+        working-directory: ./scripts  # define o diretório de trabalho padrão para os steps desse jop
+    steps:
+      - name: Checkout do Repo
+        uses: actions/checkout@v4
+      - name: Transformando o nosso script em executaveis  
+        run: chmod +x script.sh
+
+      - name: Executando
+        run: | #os scripts serão executados a partir de './scripts'
+           ./script.sh
+
