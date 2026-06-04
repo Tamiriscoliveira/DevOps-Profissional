@@ -21,7 +21,6 @@ giropops-senhas:
       cpu: "500m"
 
 redis:
-  name: redis-service
   image: "redis"
   replicas: 1
   port: 6379
