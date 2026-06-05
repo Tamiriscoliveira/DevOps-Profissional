@@ -44,3 +44,6 @@ descomplicando_terraform_turma_2024
 dockerhub-secret.yaml
 *.txt
 
+#ignorar arquivo do kyverno
+descomplicando-kubernetes/day-15/kyverno
+*.kyverno
