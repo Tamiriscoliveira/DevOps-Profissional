@@ -1,6 +1,9 @@
 //bloco do backend
+# state.tf
 terraform {
-  backend "local" {
-    path = "/home/tamiris/DevOps-Profissional/descomplicando-terraform/terraform.tfstate"
+  backend "s3" {
+    bucket = "aula-terraform-tamiris"
+    key    = "aula4-devopsProfissional"
+    region = "us-east-1"
   }
 }
