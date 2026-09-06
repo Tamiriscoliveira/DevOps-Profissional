@@ -1,11 +1,13 @@
-FROM ubuntu:18.04
-LABEL maintainer="jeferson@linuxtips.io"
-RUN apt-get update && apt-get install nginx curl -y && rm -rf /var/lib/apt/lists/*
-EXPOSE 80
-ADD node_exporter-1.9.1.linux-amd64.tar.gz  /root/node-exporter
-COPY index.html /var/www/html/
-WORKDIR /var/www/html
-ENV APP_VERSION 1.0.0
-ENTRYPOINT ["nginx"]
-CMD ["-g", "daemon off;"]
-HEALTHCHECK --timeout=2s CMD curl -f localhost || exit 1
+FROM golang:1.19 as buildando
+WORKDIR /app
+COPY  . ./
+RUN go mod init hello
+RUN go build -o /app/hello
+
+FROM  alpine:3.15.9
+COPY  --from=buildando /app/hello /app/hello
+ENV  APP="hello_world"
+ARG  TERAPIA="correr" 
+RUN echo "A minha terapia é: $TERAPIA"
+VOLUME /app/dados
+CMD ["/app/hello"]

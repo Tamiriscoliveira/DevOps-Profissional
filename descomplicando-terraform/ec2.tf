@@ -14,9 +14,10 @@ data "aws_ami" "ubuntu" {
 
 
 resource "aws_instance" "web" {
-  ami = "ami-0885b1f6bd170450c" // imagem utilizada para criar a instance
-  // ami  = data.aws_ami.ubuntu pea todos valores
+  // ami = "ami-0885b1f6bd170450c" // imagem utilizada para criar a instance
+  // ami  = data.aws_ami.ubuntu pea todos val
   // ami           = data.aws_ami.id
+  ami = var.image_id
   instance_type = "t2.micro"
 
   tags = {
@@ -27,3 +28,19 @@ resource "aws_instance" "web" {
 
 }
 
+
+resource "aws_instance" "webohio" {
+  ami = "ami-0885b1f6bd170450c" // imagem utilizada para criar a instance
+  // ami  = data.aws_ami.ubuntu pea todos valores
+  // ami           = data.aws_ami.id
+  instance_type = "t2.micro"
+  provider = aws.ohio
+
+  tags = {
+    Name       = "Hello-World"
+    enviroment = "Dev"
+    worksapce = terraform.workspace
+
+  }
+
+}
